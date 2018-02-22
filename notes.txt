@@ -36,9 +36,27 @@ equivalent to :
 }
 
 ---------------------------------
+
 # Dev tools
+
 Inspect > select element > layout
 
 dashed lines (=explicit creation like gap)
 dotted lines (=implicit)
-solid lines (=limits)
+solid lines (=explicit grid edge)
+
+---------------------------------
+
+# How to resize the implicit columns/rows ?
+
+grid-auto-rows
+or
+grid-auto-columns
+
+---------------------------------
+
+# How to create implicit columns ?
+
+If we add an element, it creates an implicit row, not a column
+
+grid-auto-flow: column;
