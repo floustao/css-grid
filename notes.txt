@@ -60,3 +60,12 @@ grid-auto-columns
 If we add an element, it creates an implicit row, not a column
 
 grid-auto-flow: column;
+
+---------------------------------
+
+# How to resize in css grid ?
+
+avoid % when resizing.
+If you have grid-gap, it will not fit well
+
+use fr instead
