@@ -34,3 +34,11 @@ equivalent to :
   grid-template-rows: ...;
   grid-gap: margin between our tracks;
 }
+
+---------------------------------
+# Dev tools
+Inspect > select element > layout
+
+dashed lines (=explicit creation like gap)
+dotted lines (=implicit)
+solid lines (=limits)
