@@ -1,0 +1,36 @@
+create your colors in style.css
+:root {
+  --yellow: #0f3565;
+}
+
+then use them with var(--yellow)
+
+---------------------------------
+
+# Shortcut Emmet
+
+.item{$}*10
+
+equivalent to :
+
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+<div class="item">4</div>
+<div class="item">5</div>
+<div class="item">6</div>
+<div class="item">7</div>
+<div class="item">8</div>
+<div class="item">9</div>
+<div class="item">10</div>
+
+---------------------------------
+
+# How to start css grid ?
+
+.parent {
+  display: grid;
+  grid-template-columns: 100px 100px 100px => 3 columns of 100 px wide (%, rem, px, auto);
+  grid-template-rows: ...;
+  grid-gap: margin between our tracks;
+}
