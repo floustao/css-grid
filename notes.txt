@@ -69,3 +69,27 @@ avoid % when resizing.
 If you have grid-gap, it will not fit well
 
 use fr instead
+fr is equivalent to Free Space !
+it is the default height (row) of an element.
+
+---------------------------------
+
+# auto vs fr
+
+auto will resize based on the content.
+ex: if content = '1' it will be small
+if content = 'flo is cool', it will adjust the width to it.
+
+fr will adjust in terms of free space
+
+---------------------------------
+
+# repeat()
+
+grid-template-columns: 1fr 1fr 1fr 1fr;
+==
+grid-template-columns: repeat(4, 1fr);
+
+# How to alternate columns ?
+
+grid-template-columns(4, 1fr 2fr) => will create '1fr 2fr 1fr 2fr 1fr 2fr 1fr 2fr'
