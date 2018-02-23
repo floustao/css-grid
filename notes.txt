@@ -11,18 +11,28 @@ then use them with var(--yellow)
 
 .item{$}*10
 
-equivalent to :
+  equivalent to :
 
-<div class="item">1</div>
-<div class="item">2</div>
-<div class="item">3</div>
-<div class="item">4</div>
-<div class="item">5</div>
-<div class="item">6</div>
-<div class="item">7</div>
-<div class="item">8</div>
-<div class="item">9</div>
-<div class="item">10</div>
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+  <div class="item">7</div>
+  <div class="item">8</div>
+  <div class="item">9</div>
+  <div class="item">10</div>
+
+.item.item${$}*5
+
+  equivalent to :
+
+  <div class="item item1">1</div>
+  <div class="item item2">2</div>
+  <div class="item item3">3</div>
+  <div class="item item4">4</div>
+  <div class="item item5">5</div>
 
 ---------------------------------
 
@@ -93,3 +103,93 @@ grid-template-columns: repeat(4, 1fr);
 # How to alternate columns ?
 
 grid-template-columns(4, 1fr 2fr) => will create '1fr 2fr 1fr 2fr 1fr 2fr 1fr 2fr'
+
+---------------------------------
+
+# How to resize grid with media queries ?
+
+**Original css :
+
+variable declarations:
+
+  .grid {
+    --columns: 200px 200px;
+  }
+
+styles :
+
+  .grid {
+    display: grid;
+    grid-template-columns: var(--columns);
+    grid-auto-rows: 140px;
+    grid-gap: 20px;
+    justify-content: center;
+  }
+
+
+**Now if you want one column instead of 2 once you go on mobile (< 450px) :
+
+  @media all and (max-width: 450px) {
+    .grid {
+      --columns: 200px;
+    }
+  }
+
+---------------------------------
+
+# Inheritance problems to be aware of : value vs variable
+
+If you declare initially :
+
+:root {
+  --red: #ff6f69;
+  --main-color: var(--red);
+}
+
+and then set :
+
+#navbar {
+    --red: orange;
+}
+
+#navbar a {
+    color: var(--main-color);
+}
+
+=> it won't change anything ! orange will not overwrite #ff6f69 nor main-color value.
+
+main-color does NOT have a reference to the variable, only to the value
+
+You can instead write :
+
+#navbar {
+    --main-color: orange;
+}
+
+#navbar a {
+    color: var(--main-color);
+}
+
+---------------------------------
+
+# Resizing grid items
+
+if you have 30 elements 5 columns * 6 rows
+you want to resize item 9 :
+
+.item9 {
+  width: 500px;
+}
+
+It will resize the entire columns containing items 4, 9, 14, 19, 24, 29 !
+NOT what we want.
+The same thing happens if instead of fixing the width, we add a long content to the item.
+
+Use span instead :
+
+.item9 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+Be careful, it will shift the next items.
