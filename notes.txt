@@ -222,3 +222,30 @@ grid-row: span 2 / 3;
 (video 11)
 
 # Spanning and placing
+
+grid-template-columns: repeat(5, 1fr 2fr) => 10 columns with 1fr / 2fr 5 times !
+
+---------------------------------
+(video 12)
+
+# auto-fit and auto-fill
+
+auto-fill : figure it out by itself how many you can fit !
+ex:
+repeat(auto-fill, 150px)
+
+auto-fit: if you only have few items inside big container, no other tracks will pop out.
+
+---------------------------------
+(video 13)
+
+# minmax() combined with auto-fit or auto-fill = EASYLIFE !
+
+=> minmax(minvalue, maxvalue)
+
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+RESPONSIVE !!
+
+# fit-content
+
+fit-content(maxvalue)
