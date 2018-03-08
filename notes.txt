@@ -75,7 +75,7 @@ grid-auto-flow: column;
 
 # How to resize in css grid ?
 
-avoid % when resizing.
+AVOID % when resizing.
 If you have grid-gap, it will not fit well
 
 use fr instead
@@ -87,8 +87,8 @@ it is the default height (row) of an element.
 # auto vs fr
 
 auto will resize based on the content.
-ex: if content = '1' it will be small
-if content = 'flo is cool', it will adjust the width to it.
+ex: if content = '1' with auto it will be small
+if content = 'flo is cool', auto  will adjust the width to it.
 
 fr will adjust in terms of free space
 
@@ -97,7 +97,7 @@ fr will adjust in terms of free space
 # repeat()
 
 grid-template-columns: 1fr 1fr 1fr 1fr;
-==
+is equivalent to :
 grid-template-columns: repeat(4, 1fr);
 
 # How to alternate columns ?
@@ -110,13 +110,13 @@ grid-template-columns(4, 1fr 2fr) => will create '1fr 2fr 1fr 2fr 1fr 2fr 1fr 2f
 
 **Original css :
 
-variable declarations:
+> variable declarations:
 
   .grid {
     --columns: 200px 200px;
   }
 
-styles :
+> styles :
 
   .grid {
     display: grid;
@@ -171,6 +171,7 @@ You can instead write :
 }
 
 ---------------------------------
+(video 9)
 
 # Resizing grid items
 
@@ -193,3 +194,31 @@ Use span instead :
 }
 
 Be careful, it will shift the next items.
+
+---------------------------------
+(video 10)
+
+# Placing grid items
+
+.move-me {
+  grid-column: 1 / -1 //=> it will grid-column-start from 1 and grid-column finish at -1
+}
+
+grid-column: 1 / -1; is equivalent to width: 100%
+
+faster than writing :
+grid-column-start: 1;
+grid-column-end: -1;
+
+
+you can also use span like :
+grid-column: 1 / span 3;
+
+or rows :
+
+grid-row: span 2 / 3;
+
+---------------------------------
+(video 11)
+
+# Spanning and placing
