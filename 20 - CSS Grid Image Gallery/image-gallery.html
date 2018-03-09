@@ -14,7 +14,6 @@
     <div class="overlay-inner">
       <button class="close">× Close</button>
       <img>
-      <img src="" alt="">
     </div>
   </div>
 
@@ -48,17 +47,83 @@
 
     .close {
       background: none;
-      color: white;
+      color: black;
       border: 0;
     }
 
-    .gallery {}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 100px);
+      grid-auto-rows: 100px;
+      grid-auto-flow: dense;
+    }
 
+    .item {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1;
+      grid-template-rows: 1;
+    }
+
+    .item img {
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item:hover .item__overlay {
+      transform: translateY(0);
+    }
+
+    .item__overlay {
+      background: #ffc60032;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      display: grid;
+      place-items: center;
+      transform: translateY(100%);
+      transition: ease 0.2s;
+    }
+
+    .item__overlay button{
+      color: white;
+      background: rgba(0,0,0,0.2);
+      border: 2px solid white;
+      padding: 5px;
+      text-transform: uppercase;
+    }
+
+    .item.v2 {
+      grid-row: span 2;
+    }
+
+    .item.v3 {
+      grid-row: span 3;
+    }
+
+    .item.v4 {
+      grid-row: span 4;
+    }
+
+    .item.h2 {
+      grid-column: span 2;
+    }
+
+    .item.h3 {
+      grid-column: span 3;
+    }
+
+    .item.h4 {
+      grid-column: span 4;
+    }
 
 
     .overlay {
       position: fixed;
       background: rgba(0, 0, 0, 0.7);
+      width: 80%;
       top: 0;
       right: 0;
       bottom: 0;
@@ -69,9 +134,10 @@
 
     .overlay.open {
       display: grid;
+      place-items: center;
     }
 
-    .overlay figure {
+    .overlay-inner {
       background: white;
       width: 700px;
       padding: 20px;
@@ -83,15 +149,15 @@
   </style>
 
   <script>
+
     const gallery = document.querySelector(`.gallery`);
     const overlay = document.querySelector(`.overlay`);
-    const overlayImage = overlay.querySelector(`img`);
     const overlayClose = overlay.querySelector(`.close`);
 
     function generateHTML([h, v]) {
       return `
-      <div>
-        <img src='images/${randomNum(12)}.jpg' class='item h${h} v${v}'/>
+      <div class='item h${h} v${v}'>
+        <img src='images/${randomNum(12)}.jpg'/>
         <div class='item__overlay'>
           <button>View &#65515</button>
         </div>
@@ -103,14 +169,30 @@
       return Math.floor(Math.random() * limit + 1)
     }
 
+    function handleClick(e) {
+      const src = e.currentTarget.querySelector(`img`).src;
+      overlay.querySelector(`img`).src = src;
+      overlay.classList.add(`open`);
+    }
+
+    function handleClose() {
+      overlay.classList.remove(`open`);
+    }
+
+    // LAUNCH IMAGE GENERATION
     // 1. create empty array of length 50 with 50 different couples
     const digits = Array.from({length: 50}, () =>
-      [randomNum(4), randomNum(4)]);
-    // 2. display generation of images in gallery
+      [randomNum(4), randomNum(4)])
+      .concat([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]); // to fill the holes
+    // 2. Convert it to a string with join()
     const html = digits.map(generateHTML).join('');
+    // 3. display generation of images in gallery
     gallery.innerHTML = html;
 
-
+    // Open & close overlay at click
+    const items = document.querySelectorAll(`.item`);
+    items.forEach(item => item.addEventListener('click', handleClick));
+    overlayClose.addEventListener('click', handleClose);
 
   </script>
 </body>
