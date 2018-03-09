@@ -377,3 +377,66 @@ Then to move a specific item, you can force it (since nth-child is priority for 
 
   background-color: var(--yellow); /* best colour */
 }
+
+---------------------------------
+(video 18)
+
+# Reorder grid using order
+
+the property 'order' can order the browser to do something in a specific order.
+
+Useful for example to change the order with media queries.
+<style>
+    .container {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(10, 1fr);
+    }
+
+    .logo {
+      grid-column: span 2;
+      order: 3;
+    }
+
+    .nav {
+      grid-column: span 8;
+      order: 2;
+    }
+
+    .content {
+      grid-column: 1 / -1;
+      order: 4;
+    }
+
+    @media (max-width: 700px) {
+      .logo {
+        order: 1;
+      }
+    }
+
+  </style>
+
+---------------------------------
+(video 19)
+
+# Creating responsive cards
+
+.albums {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+
+# You can nest a grid into a grid
+
+.albums {
+  display: grid;
+  ...
+  ...
+}
+
+.album {
+  display: grid
+  ...
+  ...
+}
