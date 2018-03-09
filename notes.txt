@@ -249,3 +249,131 @@ RESPONSIVE !!
 # fit-content
 
 fit-content(maxvalue)
+
+---------------------------------
+(video 14)
+
+# Placing items using grid template areas
+
+> make some areas in grid (3 x 3)
+grid-template-columns: 1fr 500px 1fr;
+grid-template-areas: 150px 150px 100px;
+
+> name your areas (inside 3 x 3 grid)
+grid-template-areas:
+  'sidebar-1  content  sidebar-2'
+  'sidebar-1  content  sidebar-2'
+  'footer     footer   .'
+
+the dot '.' makes an empty space
+
+> set the items in named areas
+.footer {
+  grid-aread: footer;
+}
+
+.item1 {
+  grid-area: sidebar-1
+}
+
+.item2 {
+  grid-area: content;
+}
+...
+...
+
+> you can make it responsive too :
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-areas:
+    "content    content     content"
+    "sidebar-1  sidebar-1   sidebar-2"
+    "footer     footer      footer"
+  }
+}
+
+> you can also use the named lines since we defined areas
+
+.item5 {
+  grid-column: sidebar-1-start / content-end;
+}
+
+---------------------------------
+(video 15)
+
+# Naming lines in CSS grid
+
+At the grid creation, you can name your lines using brackets [].
+Ex:
+
+grid-template-columns: [site-left] 100px [sidebar-end content-start] 5fr [content-end] 1fr [site-right]
+
+---------------------------------
+(video 16)
+
+# How to fit all blocks ? => grid-auto-flow: dense
+
+> 70 items
+> Make some irregular :
+  .item:nth-child(6n)  {
+    background: red;
+    grid-column: span 6;
+  }
+
+now you have plenty of holes !
+> Fix it with grid-auto-flow :
+
+.container {
+  ....
+  ....
+  grid-auto-flow: dense;
+}
+
+Then to move a specific item, you can force it (since nth-child is priority for css) with !important :
+
+.item18 {
+  background: blue;
+  grid-column-end: -1 1important;
+}
+
+---------------------------------
+(video 17)
+
+# CSS grid alignment and centering
+
+  -----
+  justify-items:  stretch | start | end | center
+  align-items:    stretch | start | end | center
+  -----
+
+  place-items: center center;
+    => equivalent to :
+    justify-items: center;
+    +
+    align-items: center;
+
+  -----
+  justify-content: stretch | start | end | center | space-around | space-between | space-evenly
+  align-content: same !
+  -----
+
+  -----
+  align-self:   stretch | start | end | center
+  justify-self: not possible with flexbox !
+  -----
+
+  justify-* is row axis | width
+  align-* is column axis | height
+
+
+## A good way to start styling :
+
+.item {
+  /* We center the contents of these items. */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--yellow); /* best colour */
+}
