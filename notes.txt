@@ -440,3 +440,9 @@ Useful for example to change the order with media queries.
   ...
   ...
 }
+---------------------------------
+(video 22 - codepen)
+
+# How to stick footer to the bottom ?
+
+height: 100vh
