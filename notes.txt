@@ -446,3 +446,8 @@ Useful for example to change the order with media queries.
 # How to stick footer to the bottom ?
 
 height: 100vh
+
+# How to span element to entire window width ?
+display: grid
+
+by default it will do a 1 column x 1 row and take the entire free space
