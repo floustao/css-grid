@@ -1,7 +1,7 @@
 :root {
   --main-grey: #343436;
   --light-grey: #4D4D50;
-  --dark-grey: ##1D1F20;
+  --dark-grey: #1D1F20;
   --text-grey: #CCCCCC;
   --black: black;
 
@@ -37,22 +37,60 @@ h6 {
   font-size: 1.5em;
 }
 
-/*MAIN SECTIONS*/
+/*MAIN DIV*/
 .codepen {
   display: grid;
   grid-template-rows: auto 1fr 1fr auto;
   height: 100vh;
+  color: white;
 }
 
 .codepen >* {
   border: 1px solid black;
 }
 
+/*EDITOR*/
 .code {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  background: var(--dark-grey);
 }
 
+.editor__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 5px;
+  grid-gap: 5px;
+  background: rgba(0,0,0,0.1);
+}
+
+.editor {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 20px;
+}
+
+.editor__code {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.editor__number {
+  display: block;
+  padding: 0 10px;
+}
+
+.editor__input {
+  resize: none;
+  background: none;
+  border: 0;
+  font-size: 14px;
+  color: var(--text-grey);
+}
+
+
+/*PEN HEADER*/
 .pen {
   display: grid;
   grid-template-columns: 1fr;
@@ -83,7 +121,7 @@ h6 {
   border: 3px solid var(--main-grey);
 }
 
-.button:hover {
+.pen .button:hover, .button.editor__settings:hover {
   background: var(--light-grey);
 }
 
@@ -96,4 +134,21 @@ h6 {
   padding: 4px;
 }
 
+/*.button--dirty:before {
+  background: #ffc600;
+  display: block;
+  content: '';
+  height: 2px;
+  width: calc(100% - 6px);
+  position: absolute;
+  left: 3px;
+  top: 3px;
+}*/
 
+/*SETTINGS*/
+
+.settings {
+  padding: 5px;
+  background: var(--main-grey);
+  border-top: 1px solid var(--dark-grey);
+}

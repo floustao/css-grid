@@ -451,3 +451,6 @@ height: 100vh
 display: grid
 
 by default it will do a 1 column x 1 column and take the entire free space with stretch!
+
+# Avoid resizing of text area
+resize: none;
