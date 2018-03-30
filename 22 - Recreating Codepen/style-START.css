@@ -1,9 +1,9 @@
 :root {
-  --main-grey: ##343436;
-  --light-grey: ##4D4D50;
+  --main-grey: #343436;
+  --light-grey: #4D4D50;
   --dark-grey: ##1D1F20;
-  --text-grey: ##CCCCCC;
-  --black: rgba(0,0,0,0);
+  --text-grey: #CCCCCC;
+  --black: black;
 
   }
 
@@ -37,6 +37,7 @@ h6 {
   font-size: 1.5em;
 }
 
+/*MAIN SECTIONS*/
 .codepen {
   display: grid;
   grid-template-rows: auto 1fr 1fr auto;
@@ -58,8 +59,41 @@ h6 {
   grid-auto-flow: column;
   align-items: center;
   grid-gap: 10px;
+  background: var(--black);
+  padding: 10px;
 }
 
 .preview {
   display: grid;
 }
+
+/*HEADER*/
+
+.pen__details {
+  color: white;
+}
+
+/*BUTTONS*/
+.button {
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 12px;
+  color: white;
+  background: var(--main-grey);
+  border: 3px solid var(--main-grey);
+}
+
+.button:hover {
+  background: var(--light-grey);
+}
+
+.button-action {
+  background: black;
+}
+
+.button--small {
+  font-size: 12px;
+  padding: 4px;
+}
+
+
