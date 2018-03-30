@@ -450,4 +450,4 @@ height: 100vh
 # How to span element to entire window width ?
 display: grid
 
-by default it will do a 1 column x 1 row and take the entire free space
+by default it will do a 1 column x 1 column and take the entire free space with stretch!

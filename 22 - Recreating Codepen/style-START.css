@@ -1,4 +1,13 @@
-html {
+:root {
+  --main-grey: ##343436;
+  --light-grey: ##4D4D50;
+  --dark-grey: ##1D1F20;
+  --text-grey: ##CCCCCC;
+  --black: rgba(0,0,0,0);
+
+  }
+
+  html {
   box-sizing: border-box;
   font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma,
     Sans-Serif;
