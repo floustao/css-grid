@@ -22,7 +22,9 @@
 
 ![gif](gifs/image-gallery.gif)
 
-* Recreate codepen
+* Recreate codepen grid
+
+![gif](gifs/codepen.gif)
 
 *Full course at [CSSGrid.io](https://CSSGrid.io)*
 
